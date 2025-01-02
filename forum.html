@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum Diskusi</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="preregistration.html">Layanan Pra-Registrasi Karya Ilmiah</a>
+        </li>
+        <li><a href="forum.html">Forum Diskusi</a></li>
+        <li><a href="postpublication.html">Layanan Pascapublikasi</a></li>
+        <li>
+          <a href="selfcheck.html">Halaman Self-Check Integritas Akademik</a>
+        </li>
+      </ul>
+    </nav>
+    <h1>Forum Diskusi</h1>
+
+    <div id="threads"></div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const threads = [
+      {
+        title: "How to improve academic writing?",
+        author: "Alice",
+        timestamp: "2023-10-01 10:00",
+        replies: [
+          {
+            author: "Bob",
+            timestamp: "2023-10-01 11:00",
+            content: "Practice regularly and seek feedback.",
+          },
+          {
+            author: "Charlie",
+            timestamp: "2023-10-01 12:00",
+            content: "Read academic papers to understand the style.",
+          },
+          {
+            author: "Dave",
+            timestamp: "2023-10-01 13:00",
+            content: "Use tools like Grammarly for grammar checks.",
+          },
+        ],
+      },
+      {
+        title: "Best tools for plagiarism checking",
+        author: "Eve",
+        timestamp: "2023-10-02 09:00",
+        replies: [
+          {
+            author: "Frank",
+            timestamp: "2023-10-02 10:00",
+            content: "Turnitin is widely used.",
+          },
+          {
+            author: "Grace",
+            timestamp: "2023-10-02 11:00",
+            content: "Grammarly also has a plagiarism checker.",
+          },
+        ],
+      },
+    ];
+
+    const threadForm = document.getElementById("threadForm");
+    const threadsContainer = document.getElementById("threads");
+
+    function renderThreads() {
+      threadsContainer.innerHTML = "";
+      threads.forEach((thread, index) => {
+        const threadElement = document.createElement("div");
+        threadElement.classList.add("thread");
+        threadElement.innerHTML = `
+                    <h2>${thread.title}</h2>
+                    <p>by ${thread.author} on ${thread.timestamp}</p>
+                    <button onclick="viewThread(${index})">View Thread</button>
+                `;
+        threadsContainer.appendChild(threadElement);
+      });
+    }
+
+    threadForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const threadTitle = document.getElementById("threadTitle").value;
+      const newThread = {
+        title: threadTitle,
+        author: "Anonymous",
+        timestamp: new Date().toLocaleString(),
+        replies: [],
+      };
+      threads.push(newThread);
+      renderThreads();
+      threadForm.reset();
+    });
+
+    window.viewThread = function (index) {
+      const thread = threads[index];
+      const threadDetails = `
+                <h1>${thread.title}</h1>
+                <p>by ${thread.author} on ${thread.timestamp}</p>
+                <div id="replies">
+                    ${thread.replies
+                      .map(
+                        (reply) => `
+                        <div class="reply">
+                            <p>${reply.content}</p>
+                            <p>by ${reply.author} on ${reply.timestamp}</p>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </div>
+                <form id="replyForm">
+                    <label for="replyContent">Reply:</label>
+                    <textarea id="replyContent" name="replyContent" required></textarea>
+                    <button type="submit">Add Reply</button>
+                </form>
+            `;
+      threadsContainer.innerHTML = threadDetails;
+
+      const replyForm = document.getElementById("replyForm");
+      replyForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const replyContent = document.getElementById("replyContent").value;
+        const newReply = {
+          author: "Anonymous",
+          timestamp: new Date().toLocaleString(),
+          content: replyContent,
+        };
+        thread.replies.push(newReply);
+        viewThread(index);
+      });
+    };
+
+    renderThreads();
+  });
+</script>
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+<div id="threadModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="modalThreadForm">
+      <label for="modalThreadTitle">Thread Title:</label>
+      <input
+        type="text"
+        id="modalThreadTitle"
+        name="modalThreadTitle"
+        required
+      />
+      <label for="modalThreadBody">Thread Body:</label>
+      <textarea id="modalThreadBody" name="modalThreadBody" required></textarea>
+      <button type="submit">Add Thread</button>
+    </form>
+  </div>
+</div>
+
+<form id="threadForm">
+  <button type="submit">Add Thread</button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("threadModal");
+    const btn = document.querySelector("#threadForm button");
+    const span = document.getElementsByClassName("close")[0];
+    const modalThreadForm = document.getElementById("modalThreadForm");
+
+    btn.onclick = function (event) {
+      event.preventDefault();
+      modal.style.display = "block";
+    };
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    modalThreadForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const threadTitle = document.getElementById("modalThreadTitle").value;
+      const threadBody = document.getElementById("modalThreadBody").value;
+      const newThread = {
+        title: threadTitle,
+        body: threadBody,
+        author: "Anonymous",
+        timestamp: new Date().toLocaleString(),
+        replies: [],
+      };
+      threads.push(newThread);
+      renderThreads();
+      modal.style.display = "none";
+      modalThreadForm.reset();
+    });
+  });
+</script>

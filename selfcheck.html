@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Self-Check Integritas Akademik</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #output {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f1f1f1;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        display: none;
+      }
+      #output h4 {
+        margin-bottom: 15px;
+      }
+      #output ul {
+        padding-left: 20px;
+      }
+      #output ul li {
+        margin-bottom: 10px;
+      }
+      .result-message {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="preregistration.html">Layanan Pra-Registrasi Karya Ilmiah</a>
+        </li>
+        <li><a href="forum.html">Forum Diskusi</a></li>
+        <li><a href="postpublication.html">Layanan Pascapublikasi</a></li>
+        <li>
+          <a href="selfcheck.html">Halaman Self-Check Integritas Akademik</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container mt-5 form-container">
+      <h1>Pengecekan Mandiri Integritas Akademik</h1>
+
+      <p>
+        Pengukuran ini bertujuan untuk mengukur tingkat resiko terkait
+        integritas akademik Anda berdasarkan perilaku, literasi, dan sikap Anda
+        terhadap integritas akademik. Hasil dari pengukuran ini hanya sebagai
+        evaluasi mandiri dan bukan untuk penilaian formal.
+      </p>
+      <form id="measurementForm">
+        <!-- Pertanyaan 1: Pengalaman terkait pelanggaran riset dan publikasi -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 1: Apakah Anda pernah melakukan pelanggaran dalam
+              riset atau publikasi?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal1"
+            name="soal1"
+            required
+          >
+            <option value="">-- Pilih --</option>
+            <option value="0">Tidak pernah</option>
+            <option value="1">Pernah dalam riset pribadi</option>
+            <option value="2">Pernah dalam publikasi kolaboratif</option>
+            <option value="3">Pernah dalam keduanya</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 2: Tingkat literasi akademik -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 2: Seberapa baik pengetahuan Anda tentang kebijakan
+              integritas akademik?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal2"
+            name="soal2"
+            required
+          >
+            <option value="">-- Pilih --</option>
+            <option value="0">Sangat rendah</option>
+            <option value="1">Rendah</option>
+            <option value="2">Sedang</option>
+            <option value="3">Tinggi</option>
+            <option value="4">Sangat tinggi</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 3: Apakah Anda pernah melaporkan kasus pelanggaran akademik? -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 3: Apakah Anda pernah melaporkan orang lain terkait
+              pelanggaran akademik?</strong
+            ></label
+          >
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              id="soal3_1"
+              name="soal3"
+              type="radio"
+              value="0"
+              required
+            />
+            <label class="form-check-label" for="soal3_1">Tidak pernah</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              id="soal3_2"
+              name="soal3"
+              type="radio"
+              value="1"
+            />
+            <label class="form-check-label" for="soal3_2">Pernah sekali</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              id="soal3_3"
+              name="soal3"
+              type="radio"
+              value="2"
+            />
+            <label class="form-check-label" for="soal3_3"
+              >Pernah lebih dari sekali</label
+            >
+          </div>
+        </div>
+        <!-- Pertanyaan 4: Seberapa sering Anda memeriksa karya Anda untuk plagiasi? -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 4: Seberapa sering Anda memeriksa karya Anda untuk
+              plagiasi?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal4"
+            name="soal4"
+            required
+          >
+            <option value="">-- Pilih --</option>
+            <option value="0">Tidak pernah</option>
+            <option value="1">Kadang-kadang</option>
+            <option value="2">Sering</option>
+            <option value="3">Selalu</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 5: Pengetahuan tentang cara menghindari fabrikasi data -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 5: Seberapa baik Anda mengetahui cara menghindari
+              fabrikasi data?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal5"
+            name="soal5"
+            required
+          >
+            <option value="">-- Pilih --</option>
+            <option value="0">Tidak tahu sama sekali</option>
+            <option value="1">Tahu sedikit</option>
+            <option value="2">Tahu dengan baik</option>
+            <option value="3">Sangat tahu dan terapkan secara konsisten</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 6: Sikap terhadap plagiasi -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 6: Bagaimana sikap Anda terhadap plagiasi?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal6"
+            name="soal6"
+            required
+          >
+            <option value="0">Plagiasi adalah kesalahan besar</option>
+            <option value="1">
+              Plagiasi dapat diterima dalam kondisi tertentu
+            </option>
+            <option value="2">Plagiasi kecil-kecilan dapat ditoleransi</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 7: Pengalaman dalam publikasi ganda (self-plagiarism) -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 7: Apakah Anda pernah melakukan publikasi ganda
+              (self-plagiarism)?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal7"
+            name="soal7"
+            required
+          >
+            <option value="0">Tidak pernah</option>
+            <option value="1">Pernah dalam satu outlet</option>
+            <option value="2">Pernah di beberapa outlet</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 8: Konflik kepentingan dalam riset -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 8: Apakah Anda pernah memiliki konflik kepentingan
+              dalam riset yang tidak Anda laporkan?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal8"
+            name="soal8"
+            required
+          >
+            <option value="0">Tidak pernah</option>
+            <option value="1">Pernah, tetapi sudah dilaporkan</option>
+            <option value="2">Pernah dan tidak dilaporkan</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 9: Pengetahuan tentang etika penelitian dan publikasi -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 9: Seberapa baik Anda memahami etika penelitian dan
+              publikasi?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal9"
+            name="soal9"
+            required
+          >
+            <option value="0">Tidak paham sama sekali</option>
+            <option value="1">Sedikit paham</option>
+            <option value="2">Cukup paham</option>
+            <option value="3">Sangat paham</option>
+          </select>
+        </div>
+        <!-- Pertanyaan 10: Sikap terhadap pengelolaan data riset -->
+        <div class="form-group mb-4">
+          <label
+            ><strong
+              >Pertanyaan 10: Bagaimana sikap Anda terhadap pengelolaan data
+              riset yang baik dan benar?</strong
+            ></label
+          >
+          <select
+            class="form-select form-select-sm"
+            id="soal10"
+            name="soal10"
+            required
+          >
+            <option value="">-- Pilih --</option>
+            <option value="0">Sangat penting</option>
+            <option value="1">Cukup penting</option>
+            <option value="2">Kurang penting</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="output">
+        <h4>Hasil Simulasi Integritas Akademik Anda:</h4>
+        <ul id="details"></ul>
+        <div class="result-message" id="resultMessage"></div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("measurementForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+          // Retrieve form values
+          var soal1 = document.getElementById("soal1").value;
+          var soal2 = document.getElementById("soal2").value;
+          var soal3 = document.querySelector(
+            'input[name="soal3"]:checked'
+          ).value;
+          var soal4 = document.getElementById("soal4").value;
+          var soal5 = document.getElementById("soal5").value;
+          var soal6 = document.getElementById("soal6").value;
+          var soal7 = document.getElementById("soal7").value;
+          var soal8 = document.getElementById("soal8").value;
+          var soal9 = document.getElementById("soal9").value;
+          var soal10 = document.getElementById("soal10").value;
+          // Calculate score based on inputs
+          var score =
+            parseInt(soal1) +
+            parseInt(soal2) +
+            parseInt(soal3) +
+            parseInt(soal4) +
+            parseInt(soal5) +
+            parseInt(soal6) +
+            parseInt(soal7) +
+            parseInt(soal8) +
+            parseInt(soal9) +
+            parseInt(soal10);
+          // Output details for each question
+          var details = `
+          <li>Pengalaman pelanggaran riset: ${
+            document.getElementById("soal1").options[soal1].text
+          }</li>
+          <li>Literasi akademik: ${
+            document.getElementById("soal2").options[soal2].text
+          }</li>
+          <li>Pelaporan pelanggaran: ${
+            document.querySelector('input[name="soal3"]:checked')
+              .nextElementSibling.textContent
+          }</li>
+          <li>Pemeriksaan plagiasi: ${
+            document.getElementById("soal4").options[soal4].text
+          }</li>
+          <li>Pengetahuan fabrikasi data: ${
+            document.getElementById("soal5").options[soal5].text
+          }</li>
+          <li>Sikap terhadap plagiasi: ${
+            document.getElementById("soal6").options[soal6].text
+          }</li>
+          <li>Pengalaman publikasi ganda: ${
+            document.getElementById("soal7").options[soal7].text
+          }</li>
+          <li>Konflik kepentingan: ${
+            document.getElementById("soal8").options[soal8].text
+          }</li>
+          <li>Pengetahuan etika riset: ${
+            document.getElementById("soal9").options[soal9].text
+          }</li>
+          <li>Sikap terhadap pengelolaan data riset: ${
+            document.getElementById("soal10").options[soal10].text
+          }</li>
+        `;
+          document.getElementById("details").innerHTML = details;
+          // Display the result message based on score
+          var resultMessage = "";
+          if (score <= 10) {
+            resultMessage =
+              "Resiko rendah. Integritas akademik Anda tergolong baik.";
+          } else if (score <= 20) {
+            resultMessage =
+              "Resiko menengah. Ada beberapa area yang perlu diperbaiki terkait integritas akademik.";
+          } else {
+            resultMessage =
+              "Resiko tinggi. Anda perlu memperhatikan integritas akademik secara serius.";
+          }
+          document.getElementById("resultMessage").textContent = resultMessage;
+          // Show the result
+          document.getElementById("output").style.display = "block";
+        });
+    </script>
+  </body>
+</html>
