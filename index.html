@@ -5,6 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academic Integrity</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      nav {
+        color: #fff;
+        padding: 1em;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin-right: 1em;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      section {
+        padding: 2em;
+        background-color: #fff;
+        margin: 1em 0;
+      }
+      footer {
+        text-align: center;
+        padding: 1em;
+        background-color: #333;
+        color: #fff;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      form label {
+        margin-top: 1em;
+      }
+      form input,
+      form textarea {
+        padding: 0.5em;
+        margin-top: 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      form button {
+        margin-top: 1em;
+        padding: 0.5em;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <nav>
@@ -20,43 +82,50 @@
       </ul>
     </nav>
     <h1>Welcome to the Academic Integrity Website</h1>
-  </body>
-</html>
-<section>
-  <h2>About Us</h2>
-  <p>
-    Our mission is to promote academic integrity and provide resources to help students and researchers maintain high ethical standards in their work.
-  </p>
-</section>
 
-<section>
-  <h2>Services</h2>
-  <ul>
-    <li>Pre-registration of scientific works</li>
-    <li>Discussion forums</li>
-    <li>Post-publication services</li>
-    <li>Self-check academic integrity tools</li>
-  </ul>
-</section>
+    <section>
+      <h2>About Us</h2>
+      <p>
+        Our mission is to promote academic integrity and provide resources to
+        help students and researchers maintain high ethical standards in their
+        work.
+      </p>
+    </section>
 
-<section>
-  <h2>Contact Us</h2>
-  <form action="submit_form.php" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required />
-    
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
-    
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-    
-    <button type="submit">Submit</button>
-  </form>
-</section>
+    <section>
+      <h2>Services</h2>
+      <ul>
+        <li>
+          <a href="preregistration.html"
+            >Pre-registration of scientific works</a
+          >
+        </li>
+        <li><a href="forum.html">Discussion forums</a></li>
+        <li><a href="postpublication.html">Post-publication services</a></li>
+        <li>
+          <a href="selfcheck.html">Self-check academic integrity tools</a>
+        </li>
+      </ul>
+    </section>
 
-<footer>
-  <p>&copy; 2023 Academic Integrity. All rights reserved.</p>
-</footer>
+    <section>
+      <h2>Contact Us</h2>
+      <form action="submit_form.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 Academic Integrity. All rights reserved.</p>
+    </footer>
   </body>
 </html>
